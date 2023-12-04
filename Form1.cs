@@ -4,6 +4,7 @@ namespace TextReaderTwo
     using System.Windows.Forms;
     using System.Text.Json;
     using System.Xml;
+    using System.Text;
 
     public partial class Form1 : Form
     {
@@ -27,11 +28,11 @@ namespace TextReaderTwo
                 string filePath = ofd.FileName;
                 string fileContent = File.ReadAllText(filePath);
 
-                bool erJson = IsJson(fileContent);
+                string erJson = IsJson(fileContent);
                 bool erXml = IsXml(fileContent);
 
-                if (erJson)
-                    label1.Text = "JSON";
+                if (erJson == "error")
+                    label1.Text = erJson;
                 else if (erXml)
                     label1.Text = "XML";
                 else
@@ -44,16 +45,31 @@ namespace TextReaderTwo
 
         }
 
-        public static bool IsJson(string text)
+        public static String IsJson(string text)
         {
             try
             {
-                var json = JsonDocument.Parse(text);
-                return true;
+
+                var doc = JsonDocument.Parse(text);
+                var array = doc.RootElement.EnumerateArray();
+                StringBuilder textBuilder = new StringBuilder();
+
+                foreach (var element in array)
+                {
+                    
+                    var navn = element.GetProperty("navn").GetString();
+                    var adresse = element.GetProperty("adresse").GetString();
+                    var tlf_nummer = element.GetProperty("tlf_nummer").GetString();
+                    
+                    textBuilder.AppendLine($"name: {navn}, adresse: {adresse}, tlf: {tlf_nummer}");
+                }
+                return textBuilder.ToString();
+
+           
             }
             catch (JsonException)
             {
-                return false;
+                return "error";
             }
         }
 
