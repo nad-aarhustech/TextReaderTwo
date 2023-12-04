@@ -1,0 +1,12 @@
+[
+    {
+        "navn": "John Doe",
+        "adresse": "123 Main Street",
+        "tlf_nummer": "+1234567890"
+    },
+    {
+        "navn": "Jane Smith",
+        "adresse": "456 Elm Street",
+        "tlf_nummer": "+1987654321"
+    }
+]
