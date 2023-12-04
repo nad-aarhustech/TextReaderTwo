@@ -1,0 +1,29 @@
+<?xml version = "1.0" encoding="UTF-8" standalone="yes"?>
+<contacts>
+ <contact>
+   <name>
+     <firstname>John</firstname>
+     <lastname>Doe</lastname>
+   </name>
+   <address>
+     <street>123 Main St</street>
+     <city>Anytown</city>
+     <state>Anystate</state>
+     <zip>12345</zip>
+   </address>
+   <phone>123-456-7890</phone>
+ </contact>
+ <contact>
+   <name>
+     <firstname>Jane</firstname>
+     <lastname>Doe</lastname>
+   </name>
+   <address>
+     <street>456 Elm St</street>
+     <city>Anytown</city>
+     <state>Anystate</state>
+     <zip>67890</zip>
+   </address>
+   <phone>098-765-4321</phone>
+ </contact>
+</contacts>
